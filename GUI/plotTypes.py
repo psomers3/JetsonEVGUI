@@ -170,7 +170,7 @@ class SLAMPlot(QWidget):
                           pos=[0, 0],
                           scale=[meters / pixels, meters / pixels])
 
-        points = [(0, 0.15), (.075, -0.15), (-0.075, -.15), (0, 0.15)]  # the triangle
+        points = [(0, 0.2), (.075, -0.2), (-0.075, -.2), (0, 0.2)]  # the triangle
         new_points = rotate(points, degrees=-theta)
         self.curve_plot.setData(x=new_points[:, 0] + meters - x, y=new_points[:, 1] + y)
         self.plot.setXRange(0, meters)

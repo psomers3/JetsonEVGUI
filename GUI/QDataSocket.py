@@ -1,5 +1,5 @@
 from PyQt5.QtCore import pyqtSignal,  QObject
-from DataSocket import ReceiveSocket
+from DataSocket import TCPReceiveSocket
 import time
 
 
@@ -10,7 +10,7 @@ class QDataSocket(QObject):
 
     def __init__(self, tcp_port, tcp_ip='localhost'):
         super().__init__()
-        self.socket = ReceiveSocket(tcp_ip=tcp_ip, tcp_port=tcp_port, handler_function=self._data_received)
+        self.socket = TCPReceiveSocket(tcp_ip=tcp_ip, tcp_port=tcp_port, handler_function=self._data_received)
 
     def _data_received(self, data):
         self.new_data.emit((data, time.time()))

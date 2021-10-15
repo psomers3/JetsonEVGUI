@@ -6,7 +6,7 @@ from .VideoWidget import VideoWidget
 from .SLAMWidget import SLAMWidget
 
 # if using windows... need the Bonjour service for this way of specifying the domain
-ip = "JetsonEV.local"
+ip = "localhost"
 
 
 class MainWindow(QMainWindow):
@@ -80,6 +80,8 @@ class MainWindow(QMainWindow):
         self.lidar.connected = False
 
         self.slam.socket.stop()
+        self.slam.socket_thread.quit()
+        self.slam.connected = False
 
     def closeEvent(self, event):
         self.close_sockets()
